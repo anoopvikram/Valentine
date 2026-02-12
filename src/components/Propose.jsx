@@ -104,21 +104,21 @@ export const Propose = () => {
       {/* Background */}
       <img
         ref={bgRef}
-        src="/background.png"
+        src="/background.webp"
         className="absolute inset-0 scale-110 w-full h-full object-cover z-0"
       />
 
       {/* Girl */}
       <img
         ref={girlRef}
-        src="/girl.png"
+        src="/girl.webp"
         className="absolute bottom-0 object-contain z-10"
       />
 
       {/* Guy */}
       <img
         ref={guyRef}
-        src="/guy.png"
+        src="/guy.webp"
         className="absolute scale-110 bottom-0 object-contain z-20"
       />
 

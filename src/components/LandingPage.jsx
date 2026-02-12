@@ -5,6 +5,21 @@ export const LandingPage = () => {
   const navigate = useNavigate();
 
   const [noPosition, setNoPosition] = useState(null);
+  const [messageIndex, setMessageIndex] = useState(-1);
+
+  // 😄 Funny sentences
+  const funnyMessages = [
+    "Mad Aaavana njan? 😢",
+    "Think again… I’m very lovable!",
+    "Penangan pooovaaaa!",
+    "Njan penangeeee!",
+    "Kunj Anooop alle? 🥺",
+    "Okay but… what if you reconsider?",
+    "Plot twist: No actually means Yes",
+    "You clicked No… but destiny says otherwise",
+    "Enne ishtillaaaleeee!!! 😭",
+    "Last chance before I cry dramatically..."
+  ];
 
   const moveNoButton = () => {
     const randomTop = Math.random() * 80;
@@ -14,6 +29,9 @@ export const LandingPage = () => {
       top: `${randomTop}%`,
       left: `${randomLeft}%`,
     });
+
+    // 🔁 Loop through messages
+    setMessageIndex((prev) => (prev + 1) % funnyMessages.length);
   };
 
   return (
@@ -21,32 +39,30 @@ export const LandingPage = () => {
 
       {/* Background */}
       <img
-        src="/background.png"
+        src="/background.webp"
         className="absolute inset-0 w-full h-full object-cover blur-sm scale-120"
         alt="bg"
       />
 
-      <div className="bg-black/50 absolute inset-0"/>
+      <div className="bg-black/50 absolute inset-0" />
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white">
 
         <h1 className="text-2xl md:text-3xl font-bold mb-10">
-          Will you be my Valentine? ❤️
+          Will you be my Valentine?
         </h1>
 
-        {/* Button Row */}
+        {/* Buttons */}
         <div className="flex gap-6">
 
-          {/* YES BUTTON */}
           <button
             onClick={() => navigate("/propose")}
-            className="px-8 py-3 bg-red-500 rounded-full border-2 text-lg font-semibold hover:scale-105 transition"
+            className="px-5 py-1 bg-red-900 rounded-full border-2 text-lg font-semibold hover:scale-105 transition"
           >
             Yes
           </button>
 
-          {/* NO BUTTON */}
           <button
             onClick={moveNoButton}
             style={
@@ -58,12 +74,20 @@ export const LandingPage = () => {
                   }
                 : {}
             }
-            className="px-6 py-2 bg-gray-700 rounded-full border-2 text-lg font-semibold transition"
+            className="px-5 py-1 bg-gray-700 rounded-full border-2 text-lg font-semibold transition"
           >
-            No 😢
+            No
           </button>
 
         </div>
+
+        {/* Funny Message */}
+        {messageIndex >= 0 && (
+          <p className="mt-8 text-lg">
+            {funnyMessages[messageIndex]}
+          </p>
+        )}
+
       </div>
     </div>
   );
